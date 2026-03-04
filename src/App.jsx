@@ -9,7 +9,6 @@ import Skills from "./components/Skills"
 import Intro from "./components/Intro"
 import Achievements from "./components/Achievements"
 import Footer from "./components/Footer"
-import { Analytics } from "@vercel/analytics/react"
 
 import profile from "./assets/profile.jpg"
 
@@ -141,8 +140,7 @@ className="bg-black text-white min-h-screen overflow-x-hidden"
   <Contact />
   <Footer />
 
-  {/* Vercel Analytics */}
-  <Analytics />
+  
 </motion.div>
 
 )
