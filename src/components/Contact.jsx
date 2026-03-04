@@ -48,7 +48,7 @@ function Contact() {
 
   return (
     <section
-      id="Contact"
+      id="contact"
       className="min-h-screen bg-black text-white flex items-center justify-center px-6 sm:px-10 md:px-20 py-20"
     >
 

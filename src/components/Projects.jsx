@@ -21,7 +21,7 @@ const projects = [
 export default function Projects() {
   return (
     <section
-      id="Projects"
+      id="projects"
       className="min-h-screen bg-black text-white px-6 sm:px-10 md:px-20 py-20"
     >
       {/* Heading */}

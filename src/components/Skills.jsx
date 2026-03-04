@@ -34,7 +34,7 @@ const item = {
 export default function Skills() {
   return (
     <section
-      id="Skills"
+      id="skills"
       className="min-h-screen bg-black text-white px-6 sm:px-10 md:px-20 py-20"
     >
 

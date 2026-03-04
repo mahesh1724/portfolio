@@ -49,7 +49,7 @@ function App() {
 
       {/* Hero Section */}
       <section
-        id="Home"
+        id="home"
         className="min-h-screen flex flex-col md:flex-row items-center justify-center md:justify-between px-6 sm:px-10 md:px-20 pt-28 md:pt-32 gap-12"
       >
         
