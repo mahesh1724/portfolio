@@ -4,23 +4,29 @@ function VisitorCount() {
   const [count, setCount] = useState("...")
 
   useEffect(() => {
-    const hasVisited = sessionStorage.getItem("visited")
+    const updateVisitors = async () => {
+      try {
+        const visited = sessionStorage.getItem("portfolioVisited")
 
-    if (hasVisited) {
-      fetch("https://api.counterapi.dev/v1/mahesh-babu-portfolio/visitors")
-        .then((res) => res.json())
-        .then((data) => setCount(data.count))
-        .catch(() => setCount("Unavailable"))
+        const url = visited
+          ? "https://api.counterapi.dev/v1/mahesh-babu-portfolio/visitors"
+          : "https://api.counterapi.dev/v1/mahesh-babu-portfolio/visitors/up"
 
-      return
+        const res = await fetch(url)
+        const data = await res.json()
+
+        if (!visited) {
+          sessionStorage.setItem("portfolioVisited", "true")
+        }
+
+        setCount(data.count || data.value || 0)
+      } catch (error) {
+        console.log("Visitor counter error:", error)
+        setCount("Unavailable")
+      }
     }
 
-    sessionStorage.setItem("visited", "true")
-
-    fetch("https://api.counterapi.dev/v1/mahesh-babu-portfolio/visitors/up")
-      .then((res) => res.json())
-      .then((data) => setCount(data.count))
-      .catch(() => setCount("Unavailable"))
+    updateVisitors()
   }, [])
 
   return (
