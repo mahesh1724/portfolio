@@ -6,20 +6,21 @@ function VisitorCount() {
   useEffect(() => {
     const updateVisitors = async () => {
       try {
-        const visited = sessionStorage.getItem("portfolioVisited")
+        const alreadyCounted = localStorage.getItem("maheshPortfolioCounted")
 
-        const url = visited
-          ? "https://api.counterapi.dev/v1/mahesh-babu-portfolio/visitors"
-          : "https://api.counterapi.dev/v1/mahesh-babu-portfolio/visitors/up"
-
-        const res = await fetch(url)
-        const data = await res.json()
-
-        if (!visited) {
-          sessionStorage.setItem("portfolioVisited", "true")
+        if (alreadyCounted) {
+          setCount(alreadyCounted)
+          return
         }
 
-        setCount(data.count || data.value || 0)
+        const res = await fetch(
+          "https://api.counterapi.dev/v1/mahesh-babu-portfolio/visitors/up"
+        )
+
+        const data = await res.json()
+
+        localStorage.setItem("maheshPortfolioCounted", data.count)
+        setCount(data.count)
       } catch (error) {
         console.log("Visitor counter error:", error)
         setCount("Unavailable")
