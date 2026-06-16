@@ -1,29 +1,22 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 function VisitorCount() {
   const [count, setCount] = useState("...")
+  const hasRun = useRef(false)
 
   useEffect(() => {
-    const getVisitors = async () => {
-      try {
-        const res = await fetch(
-          "https://api.counterapi.dev/v1/mahesh-babu-portfolio/visitors/up"
-        )
+    if (hasRun.current) return
+    hasRun.current = true
 
-        const data = await res.json()
-        setCount(data.count)
-      } catch (error) {
-        console.log("Visitor Count Error:", error)
-        setCount("Unavailable")
-      }
-    }
-
-    getVisitors()
+    fetch("https://api.counterapi.dev/v1/mahesh-babu-portfolio/visitors/up")
+      .then((res) => res.json())
+      .then((data) => setCount(data.count))
+      .catch(() => setCount("Unavailable"))
   }, [])
 
   return (
-    <div className="text-center py-6 bg-black">
-      <p className="text-sm text-gray-400">
+    <div className="text-center py-4 bg-black">
+      <p className="inline-block px-4 py-2 rounded-full bg-zinc-900 border border-zinc-700 text-sm text-gray-400">
         Visitors: {count}
       </p>
     </div>
