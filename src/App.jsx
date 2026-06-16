@@ -136,7 +136,7 @@ function App() {
       <About />
       <Skills />
       <Projects />
-      <VisitorCount />
+      
       <Achievements />
       <Contact />
       <Footer />
