@@ -1,12 +1,21 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 
 function VisitorCount() {
   const [count, setCount] = useState("...")
-  const hasRun = useRef(false)
 
   useEffect(() => {
-    if (hasRun.current) return
-    hasRun.current = true
+    const hasVisited = sessionStorage.getItem("visited")
+
+    if (hasVisited) {
+      fetch("https://api.counterapi.dev/v1/mahesh-babu-portfolio/visitors")
+        .then((res) => res.json())
+        .then((data) => setCount(data.count))
+        .catch(() => setCount("Unavailable"))
+
+      return
+    }
+
+    sessionStorage.setItem("visited", "true")
 
     fetch("https://api.counterapi.dev/v1/mahesh-babu-portfolio/visitors/up")
       .then((res) => res.json())
