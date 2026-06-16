@@ -10,6 +10,7 @@ import Intro from "./components/Intro"
 import Achievements from "./components/Achievements"
 import Footer from "./components/Footer"
 import VisitorCount from "./components/VisitorCount"
+import { Analytics } from "@vercel/analytics/react"
 
 
 import profile from "./assets/profile.jpg"
@@ -139,6 +140,7 @@ function App() {
       <Achievements />
       <Contact />
       <Footer />
+      <Analytics />
     </motion.div>
   )
 }
