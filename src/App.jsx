@@ -9,6 +9,7 @@ import Skills from "./components/Skills"
 import Intro from "./components/Intro"
 import Achievements from "./components/Achievements"
 import Footer from "./components/Footer"
+import VisitorCount from "./components/VisitorCount"
 
 
 import profile from "./assets/profile.jpg"
@@ -134,6 +135,7 @@ function App() {
       <About />
       <Skills />
       <Projects />
+      <VisitorCount />
       <Achievements />
       <Contact />
       <Footer />
